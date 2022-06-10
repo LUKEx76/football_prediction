@@ -1,0 +1,63 @@
+
+- Football or Soccer
+- Multiclass Problem? (H, D, A)
+- Predict Winner or Result/Score (expected goals) (Heuer did both)
+- Predicting 2 things expected goals home and away // Goal sum and goal difference
+- Training against the closing line or expected goals or result
+- Heue: Bei 7 schritten fließt marktwert nicht ein, bei Model danach schon
+- Torchance == Torschuss (shots on target)
+
+- Should bookmaker lines be a part of the thesis?
+
+
+- Ist Models schachteln ein Ding? -> Wahrscheinlichkeit für Torerfolgmodel -> Expected Goals Model 
+- Es scheint als ob es ohne Event Data schwierig wird
+  -> Vergleich Event Data Model vs Eventless
+
+TODO:
+- regression übung machen
+- ontarget / offtarget ws scrape mit pässen!
+-soccerstand auschecken
+- 3 vorherige spielzeiten sammeln?
+- friends of tracking
+- heuer model aufsetzen
+
+
+- 2 datasets versuchen -> Date ordered, spieltag ordered / Kicker verifizieren
+
+
+--WRITING: Data quality: home/away, incidents
+            Can't assume home-away always alternates
+            Can't assume order of teams winter and sommer split is the same
+            Heuer did not have to deal with that
+            Heuer did only use savedshots
+
+      Heuer: Gleiche Heimvorteil Parameter genutzt, von einer weiteren Reduktio wurde abgesehen
+              oder: Heimvorteil wieder modellieren?
+      Datenbasis nicht optimal für Heuers Model, da er sich immer auf letzte 3 saisons bezieht 
+
+   
+
+Incident:
+Bastia vs Lyon 16-17: abgebrochen, 0:0, 3 Punkte für Lyon
+Kicker: Das Spiel wurde nach Ausschreitungen der Bastia-Fans zur Halbzeit abgebrochen und mit X:0 für Lyon gewertet.
+file:///H:/Documents/Hochschule/Bachelorarbeit/ws_data/fra/2016-17/games/1076372_310_228.html
+
+-------------------------------------------------------
+14/15
+15/16
+16/17
+17/18
+18/19
+
+
+
+19/20 <- Covid
+
+
+1. Data mining
+2. Implementing Heuers Model
+3. Implementing Machine Learning Model with Heuers Featureset
+4. Compare both models
+5. Improving Machine Learning Model with wider Featureset
+6. Compare all three Models
