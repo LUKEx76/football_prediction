@@ -10,19 +10,19 @@ with open('./teamstrength.csv', 'r') as file:
         elements = line.split(';')
 
         country = "ITA"
-        replace_value = -2.421052632
+        replace_value = -2.359649123
 
-        if elements[0] == country and elements[1] == '15-16':
+        if elements[0] == country and elements[1] == '16-17':
             if elements[7] == "NULL":
                 elements[7] = replace_value
             if elements[8] == "NULL":
                 elements[8] = replace_value
-        if elements[0] == country and elements[1] == '16-17':
+        if elements[0] == country and elements[1] == '17-18':
             if elements[9] == "NULL":
                 elements[9] = replace_value
             if elements[10] == "NULL":
                 elements[10] = replace_value
-        if elements[0] == country and elements[1] == '17-18':
+        if elements[0] == country and elements[1] == '18-19':
             if elements[11] == "NULL":
                 elements[11] = replace_value
             if elements[12] == "NULL":
