@@ -15,7 +15,6 @@ with open("test.json", "r") as json_file:
 
 
 with open("country_season_goalamount.csv", "r") as file:
-    print(completed_season_goalamount)
     for line in file:
         line = line.replace("\n", "")
 
