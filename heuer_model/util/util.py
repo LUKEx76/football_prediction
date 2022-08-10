@@ -1,29 +1,30 @@
-import copy
 
-with open("country_season_goalamount.csv", "r") as file:
-    last_country = ""
-    prev_current_season_goalamount = 0
-    counter = 0
+with open("country_season_homefield_adv.csv", "r") as file:
+    data = dict()
     for line in file:
         line = line.replace("\n", "")
 
         if line.startswith("country"):
-            print(line)
+            print(line + ";hf_adv_current_season")
             continue
 
         elements = line.split(";")
 
-        if elements[0] == last_country:
-            tmp = copy.copy(elements[4])
-            elements[4] = prev_current_season_goalamount
-            prev_current_season_goalamount = tmp
-        else:
-            prev_current_season_goalamount = elements[4]
-            elements[4] = 0
+        if elements[0] not in data.keys():
+            data[elements[0]] = {}
 
-        last_country = elements[0]
-        out = ""
-        for element in elements:
-            out += str(element) + ";"
+        if elements[1] not in data[elements[0]].keys():
+            data[elements[0]][elements[1]] = {
+                "total": 0, "count": 0, "mean": 0}
 
-        print(out[:-1])
+        data[elements[0]][elements[1]]["total"] += float(elements[3])
+        data[elements[0]][elements[1]]["count"] += 1
+        data[elements[0]][elements[1]
+                          ]["mean"] = float(data[elements[0]][elements[1]]["total"] / data[elements[0]][elements[1]]["count"])
+
+        # out = ""
+        # for element in elements:
+        #     out += str(element) + ";"
+
+        print(line+";"+str(data[elements[0]][elements[1]
+                                             ]["mean"]))
