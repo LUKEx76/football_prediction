@@ -1,4 +1,4 @@
-country;season;matchnumber;teamname;curr_chance_diff;past_chance_diff1;past_chance_diff2;past_chance_diff3;marketvalue;actual_goaldiff
+country;season;matchnumber;teamname;curr_chancediff;past_chancediff1;past_chancediff2;past_chancediff3;marketvalue;actual_goaldiff
 ENG;14;1;Queens Park Rangers;0;0;0;0;112;-1
 ENG;14;1;Hull;0;0;0;0;117;1
 ENG;14;1;Newcastle;0;0;0;0;140;-2
