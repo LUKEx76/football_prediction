@@ -18,17 +18,15 @@
 
 
 data = dict()
-with open("matches.csv", "r") as file:
+with open("country_season_homefield_adv.csv", "r") as file:
     for line in file:
         line = line.replace("\n", "")
 
-        if line.startswith("country"):
-            print(line)
-            continue
+        # if line.startswith("country"):
+        #     print(line)
+        #     continue
 
         elements = line.split(";")
 
-        if elements[2] == "0":
-            continue
-
-        print(line)
+        print(elements[0]+";"+elements[1]+";"+elements[2]+";" +
+              elements[5]+";"+elements[4]+";"+elements[3])
