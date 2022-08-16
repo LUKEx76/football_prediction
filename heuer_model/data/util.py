@@ -18,43 +18,23 @@
 
 
 data = dict()
-with open("goal_amount.csv", "r") as file:
-    for line in file:
-        line = line.replace("\n", "")
-
-        if line.startswith("country"):
-            continue
-
-        elements = line.split(";")
-
-        if elements[0] not in data.keys():
-            data[elements[0]] = {}
-        if elements[1] not in data[elements[0]].keys():
-            data[elements[0]][elements[1]] = {}
-        if elements[2] not in data[elements[0]][elements[1]].keys():
-            data[elements[0]][elements[1]][elements[2]] = {}
-
-        if elements[3] not in data[elements[0]][elements[1]][elements[2]].keys():
-            data[elements[0]][elements[1]][elements[2]][elements[3]] = 0
-        if elements[4] not in data[elements[0]][elements[1]][elements[2]].keys():
-            data[elements[0]][elements[1]][elements[2]][elements[4]] = 0
-
-        data[elements[0]][elements[1]][elements[2]
-                                       ][elements[3]] = int(elements[5])
-        data[elements[0]][elements[1]][elements[2]
-                                       ][elements[4]] = int(elements[5])
-
-
 with open("teamstrength.csv", "r") as file:
     for line in file:
         line = line.replace("\n", "")
 
         if line.startswith("country"):
-            print(line + ";actual_goalamount")
+            print(line)
             continue
 
         elements = line.split(";")
 
-        goalamount = data[elements[0]][elements[1]][elements[2]][elements[3]]
+        if elements[2] == "1":
+            elements[2] = "0"
+            elements[9] = "0"
+            elements[13] = "0"
+            out = ""
+            for element in elements:
+                out += element + ";"
+            print(out[:-1])
 
-        print(line + ";" + str(goalamount))
+        print(line)
