@@ -1,4 +1,11 @@
 
+Lernen: pro Liga, pro Saison?
+- alle 3 ausprobieren -> Fehler vergleichen
+
+Abhängige features?
+- Torsumme: seasonnummer als feature hinzufügen, um historische reduktion abbilden zu können?
+
+---------------------
 - Football or Soccer
 - Multiclass Problem? (H, D, A)
 - Predict Winner or Result/Score (expected goals) (Heuer did both)
