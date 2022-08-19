@@ -4,6 +4,7 @@ Lernen: pro Liga, pro Saison?
 
 Abhängige features?
 - Torsumme: seasonnummer als feature hinzufügen, um historische reduktion abbilden zu können?
+- Mit daten von mehreren saisons: Gewichte für erste spieltage völlig daneben
 
 ---------------------
 - Football or Soccer
