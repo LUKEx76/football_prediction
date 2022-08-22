@@ -6,6 +6,8 @@ Abhängige features?
 - Torsumme: seasonnummer als feature hinzufügen, um historische reduktion abbilden zu können?
 - Mit daten von mehreren saisons: Gewichte für erste spieltage völlig daneben
 
+Initialisierungen mit 0 oder Mittelwert?
+
 ---------------------
 - Football or Soccer
 - Multiclass Problem? (H, D, A)
