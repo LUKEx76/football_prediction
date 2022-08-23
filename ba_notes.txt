@@ -8,6 +8,8 @@ Abhängige features?
 
 Initialisierungen mit 0 oder Mittelwert?
 
+Bei Heuer: Wie soll Trainings und Testdatensplit gemacht werden? ein Array von Gewichtsvektoren pro Spieltag?
+
 ---------------------
 - Football or Soccer
 - Multiclass Problem? (H, D, A)
@@ -23,14 +25,6 @@ Initialisierungen mit 0 oder Mittelwert?
 - Ist Models schachteln ein Ding? -> Wahrscheinlichkeit für Torerfolgmodel -> Expected Goals Model 
 - Es scheint als ob es ohne Event Data schwierig wird
   -> Vergleich Event Data Model vs Eventless
-
-TODO:
-- regression übung machen
-- ontarget / offtarget ws scrape mit pässen!
--soccerstand auschecken
-- 3 vorherige spielzeiten sammeln?
-- friends of tracking
-- heuer model aufsetzen
 
 
 - 2 datasets versuchen -> Date ordered, spieltag ordered / Kicker verifizieren
