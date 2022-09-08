@@ -1,4 +1,46 @@
+WRITIING NOTES:
 
+INTRODUCTION:
+    MOTIVATION:
+    PROJECT OBJECTIVES:
+    THESIS STRUCTURE:
+
+FUNDAMENTALS:
+    EXPECTED GOALS:
+
+DATA:
+    SUBJECT DATA:
+    DATA QUALITY:
+
+HEUERS PREDICTION MODEL:
+    HEUERS SEVEN STEPS FOR FOOTBALL PREDICTIONS:
+    DIFFERENCES:
+
+MACHINE LEARNING PREDICTION MODELS:
+    ACTUAL GOAL REGRESSION - TRAINING AGAINST ACTUAL GOALS:
+    EXPECTED GOAL REGRESSION - TRAINING AGAINST EXPECTED GOALS:
+
+COMPARISON:
+    STATISTICS VS. MACHINE LEARNING
+    HEUERS MODEL VS. ACTUAL GOAL REGRESSION
+    ACTUAL GOAL REGRESSION VS. EXPECTED GOAL REGRESSION
+
+CONCLUSION AND FUTURE WORK:
+
+
+
+---------------------------------------------------------------------
+Termin fragen:
+- Abnahme, Heuers Model scheint nicht richtig zu performen
+- Daten in Appendix?
+- Quellen, was noch zitieren? Wie gehe ich auf Wissen aus der Vorlesung ein? Wie genau Heuer zitieren?
+- kleine Summary hinter jedes Kapitel
+- Umfang?
+- inwiefern Heuers Model nochmal beschreiben?
+
+
+
+---------------------------------------------------------------------
 Lernen: pro Liga, pro Saison?
 - alle 3 ausprobieren -> Fehler vergleichen
 
