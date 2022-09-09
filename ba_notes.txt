@@ -37,6 +37,7 @@ Termin fragen:
 - kleine Summary hinter jedes Kapitel
 - Umfang?
 - inwiefern Heuers Model nochmal beschreiben?
+- Heuers feature im vergleich mit reinen features auf correlation plotten?
 
 
 
