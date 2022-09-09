@@ -38,6 +38,8 @@ Termin fragen:
 - Umfang?
 - inwiefern Heuers Model nochmal beschreiben?
 - Heuers feature im vergleich mit reinen features auf correlation plotten?
+- Sehr plot basiert ist das okay?
+- was hab ich vergessen?
 
 
 
