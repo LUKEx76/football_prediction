@@ -41,6 +41,7 @@ Termin fragen:
 - Sehr plot basiert ist das okay?
 - was hab ich vergessen?
 - ist der marktwert plot zu unübersichtlich?
+- Kann ich seine Korrelationsplot funktion übernehmen?
 
 
 ---------------------------------------------------------------------
