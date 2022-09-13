@@ -31,6 +31,7 @@ CONCLUSION AND FUTURE WORK:
 
 ---------------------------------------------------------------------
 Termin fragen:
+- passt meine closed form solution?
 - Abnahme, Heuers Model scheint nicht richtig zu performen
 - Daten in Appendix?
 - Quellen, was noch zitieren? Wie gehe ich auf Wissen aus der Vorlesung ein? Wie genau Heuer zitieren?
