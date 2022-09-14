@@ -31,19 +31,37 @@ CONCLUSION AND FUTURE WORK:
 
 ---------------------------------------------------------------------
 Termin fragen:
+
+Generell:
+- passt lineare Regression/ squared loss
 - passt meine closed form solution?
+
+Heuer:
+- Fitnesswert ausgespart
 - Abnahme, Heuers Model scheint nicht richtig zu performen
-- Daten in Appendix?
-- Quellen, was noch zitieren? Wie gehe ich auf Wissen aus der Vorlesung ein? Wie genau Heuer zitieren?
-- kleine Summary hinter jedes Kapitel
-- Umfang?
+- Heuers feature im vergleich mit reinen features auf correlation plotten? (evtl als extra)
+
+ML-Models:
+- Generelles Vorgehen
+- gleiches Featureset
+- gewichte gegenüberstellen?
+
+Schreiben:
 - inwiefern Heuers Model nochmal beschreiben?
-- Heuers feature im vergleich mit reinen features auf correlation plotten?
 - Sehr plot basiert ist das okay?
-- was hab ich vergessen?
 - ist der marktwert plot zu unübersichtlich?
 - Kann ich seine Korrelationsplot funktion übernehmen?
 
+- Quellen, was noch zitieren? 
+- Wie gehe ich auf Wissen aus der Vorlesung ein? 
+- Wie genau Heuer zitieren?
+- Daten in Appendix?
+- Umfang?
+- Vor abgabe lesen?
+
+Abschluss:
+- was hab ich vergessen?
+- (Auslands-)Master fragen
 
 ---------------------------------------------------------------------
 Lernen: pro Liga, pro Saison?
