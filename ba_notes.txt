@@ -1,3 +1,11 @@
+TODOS:
+- absoluter fehler statt squared    CHECK!
+- xgboost referenzwert
+- k fold crossvalidation -> script
+- Fitnesswert einbauen
+- Heuer model fixen
+
+---------------------------------------------------
 WRITIING NOTES:
 
 INTRODUCTION:
