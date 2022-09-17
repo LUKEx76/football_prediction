@@ -1,9 +1,9 @@
 TODOS:
 - absoluter fehler statt squared    CHECK!
-- xgboost referenzwert
-- k fold crossvalidation -> script
-- Fitnesswert einbauen
+- xgboost referenzwert              CHECK!
+- Fitnesswert einbauen              Heuer check!
 - Heuer model fixen
+- ML praticeses einbauen -> script
 
 ---------------------------------------------------
 WRITIING NOTES:
