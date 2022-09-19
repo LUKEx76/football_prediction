@@ -1,7 +1,7 @@
 
 
 data = dict()
-with open("market.csv", "r") as file:
+with open("chances.csv", "r") as file:
     for line in file:
         line = line.replace("\n", "")
         if line.startswith("country"):
@@ -15,9 +15,31 @@ with open("market.csv", "r") as file:
             data[items[0]][items[1]] = {}
         if items[2] not in data[items[0]][items[1]].keys():
             data[items[0]][items[1]][items[2]] = {}
+        if items[3] not in data[items[0]][items[1]][items[2]].keys():
+            data[items[0]][items[1]][items[2]][items[3]] = {
+                "chances": 0, "chances_against": 0}
+        if items[4] not in data[items[0]][items[1]][items[2]].keys():
+            data[items[0]][items[1]][items[2]][items[4]] = {
+                "chances": 0, "chances_against": 0}
 
-        data[items[0]][items[1]][items[2]]["mv"] = items[3]
-        data[items[0]][items[1]][items[2]]["mv_ln"] = items[4]
+        if int(items[2]) > 1:
+            data[items[0]][items[1]][items[2]][items[3]]["chances"] = data[items[0]
+                                                                           ][items[1]][str(int(items[2])-1)][items[3]]["chances"] + int(items[5])
+            data[items[0]][items[1]][items[2]][items[3]]["chances_against"] = data[items[0]
+                                                                                   ][items[1]][str(int(items[2])-1)][items[3]]["chances_against"] + int(items[6])
+            data[items[0]][items[1]][items[2]][items[4]]["chances"] = data[items[0]
+                                                                           ][items[1]][str(int(items[2])-1)][items[4]]["chances"] + int(items[6])
+            data[items[0]][items[1]][items[2]][items[4]]["chances_against"] = data[items[0]
+                                                                                   ][items[1]][str(int(items[2])-1)][items[4]]["chances_against"] + int(items[5])
+        else:
+            data[items[0]][items[1]][items[2]
+                                     ][items[3]]["chances"] = int(items[5])
+            data[items[0]][items[1]][items[2]][items[3]
+                                               ]["chances_against"] = int(items[6])
+            data[items[0]][items[1]][items[2]
+                                     ][items[4]]["chances"] = int(items[6])
+            data[items[0]][items[1]][items[2]][items[4]
+                                               ]["chances_against"] = int(items[5])
 
 
 with open("plot_matches.csv", "r") as file:
@@ -25,18 +47,23 @@ with open("plot_matches.csv", "r") as file:
         line = line.replace("\n", "")
         if line.startswith("country"):
             print(
-                line+";ht_market_value;at_market_value;ht_market_value_ln;at_market_value_ln")
+                line+";ht_curr_chancediff;at_curr_chancediff;ht_curr_chanceamount;at_curr_chanceamount")
             continue
 
         items = line.split(";")
 
-        ht_market_value, at_market_value = 0, 0
-        ht_market_value_ln, at_market_value_ln = 0, 0
+        ht_curr_chancediff, at_curr_chancediff = 0, 0
+        ht_curr_chanceamount, at_curr_chanceamount = 0, 0
 
-        ht_market_value = data[items[0]][items[1]][items[3]]["mv"]
-        at_market_value = data[items[0]][items[1]][items[4]]["mv"]
-        ht_market_value_ln = data[items[0]][items[1]][items[3]]["mv_ln"]
-        at_market_value_ln = data[items[0]][items[1]][items[4]]["mv_ln"]
+        if int(items[2]) > 1:
+            ht_curr_chancediff = (float(data[items[0]][items[1]][str(int(
+                items[2])-1)][items[3]]["chances"]) - float(data[items[0]][items[1]][str(int(items[2])-1)][items[3]]["chances_against"])) / (int(items[2])-1)
+            at_curr_chancediff = (float(data[items[0]][items[1]][str(int(
+                items[2])-1)][items[4]]["chances"]) - float(data[items[0]][items[1]][str(int(items[2])-1)][items[4]]["chances_against"])) / (int(items[2])-1)
+            ht_curr_chanceamount = float(data[items[0]][items[1]][str(
+                int(items[2])-1)][items[3]]["chances"]) / (int(items[2])-1)
+            at_curr_chanceamount = float(data[items[0]][items[1]][str(
+                int(items[2])-1)][items[4]]["chances"]) / (int(items[2])-1)
 
-        print(line+";"+str(ht_market_value)+";"+str(at_market_value) +
-              ";"+str(ht_market_value_ln)+";"+str(at_market_value_ln))
+        print(line+";"+str(ht_curr_chancediff)+";"+str(at_curr_chancediff) +
+              ";"+str(ht_curr_chanceamount)+";"+str(at_curr_chanceamount))
