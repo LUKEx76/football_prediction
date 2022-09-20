@@ -1,9 +1,9 @@
 TODOS:
-- absoluter fehler statt squared    CHECK!
-- xgboost referenzwert              CHECK!
-- Fitnesswert einbauen              CHECK!
-- ML praticeses einbauen -> script
-- Heuer model fixen
+- absoluter fehler statt squared                CHECK!
+- xgboost referenzwert                          CHECK!
+- Fitnesswert einbauen                          CHECK!
+- Heuer model fixen                             CHECK!
+- ML praticeses einbauen -> script, outlier?
 
 ---------------------------------------------------
 WRITIING NOTES:
