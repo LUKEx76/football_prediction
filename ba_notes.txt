@@ -1,9 +1,11 @@
+Outlier Entfernung crossvalidieren?
+
 TODOS:
 - absoluter fehler statt squared                CHECK!
 - xgboost referenzwert                          CHECK!
 - Fitnesswert einbauen                          CHECK!
 - Heuer model fixen                             CHECK!
-- ML praticeses einbauen -> script, outlier?
+- ML praticeses einbauen -> script, outlier?    CHECK!
 
 ---------------------------------------------------
 WRITIING NOTES:
