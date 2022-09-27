@@ -1,5 +1,6 @@
 - Outlier Entfernung crossvalidieren?
-- Country als kategorie feature?
+- Cubek nach Namen von Fussballergebnissverteilung fragen
+- Nochmal linear regression / squared loss nachlesen Sec 5.2
 
 TODOS:
 - absoluter fehler statt squared                CHECK!
