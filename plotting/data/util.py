@@ -1,4 +1,5 @@
-rel = dict()
+
+ann_rel = dict()
 
 with open("rel.csv", "r") as file:
     for line in file:
@@ -8,17 +9,17 @@ with open("rel.csv", "r") as file:
 
         items = line.split(";")
 
-        if items[0] not in rel.keys():
-            rel[items[0]] = {}
-        if items[1] not in rel[items[0]].keys():
-            rel[items[0]][items[1]] = {"rel_sum": 0, "rel_diff": 0}
+        if items[0] not in ann_rel.keys():
+            ann_rel[items[0]] = {}
+        if items[1] not in ann_rel[items[0]].keys():
+            ann_rel[items[0]][items[1]] = {"rel_diff": 0, "rel_amount": 0}
 
-        rel[items[0]][items[1]]["rel_diff"] = float(items[2])
-        rel[items[0]][items[1]]["rel_sum"] = float(items[3])
+        ann_rel[items[0]][items[1]]["rel_diff"] = float(items[2])
+        ann_rel[items[0]][items[1]]["rel_amount"] = float(items[3])
 
 
-data = dict()
-with open("chances.csv", "r") as file:
+ann = dict()
+with open("annual.csv", "r") as file:
     for line in file:
         line = line.replace("\n", "")
         if line.startswith("country"):
@@ -26,16 +27,76 @@ with open("chances.csv", "r") as file:
 
         items = line.split(";")
 
-        if items[0] not in data.keys():
-            data[items[0]] = {}
-        if items[1] not in data[items[0]].keys():
-            data[items[0]][items[1]] = {}
-        if items[2] not in data[items[0]][items[1]].keys():
-            data[items[0]][items[1]][items[2]] = {
-                "chance_diff": 0, "chance_sum": 0}
+        if items[0] not in ann.keys():
+            ann[items[0]] = {}
+        if items[1] not in ann[items[0]].keys():
+            ann[items[0]][items[1]] = {}
+        if items[2] not in ann[items[0]].keys():
+            ann[items[0]][items[1]][items[2]] = {
+                "ann_diff": 0, "ann_amount": 0}
 
-        data[items[0]][items[1]][items[2]]["chance_diff"] = float(items[4])
-        data[items[0]][items[1]][items[2]]["chance_sum"] = float(items[3])
+        ann[items[0]][items[1]][items[2]]["ann_diff"] = float(items[3])
+        ann[items[0]][items[1]][items[2]]["ann_amount"] = float(items[4])
+
+
+curr = dict()
+with open("curr.csv", "r") as file:
+    for line in file:
+        line = line.replace("\n", "")
+        if line.startswith("country"):
+            continue
+
+        items = line.split(";")
+
+        if items[0] not in curr.keys():
+            curr[items[0]] = {}
+        if items[1] not in curr[items[0]].keys():
+            curr[items[0]][items[1]] = {}
+        if items[2] not in curr[items[0]][items[1]].keys():
+            curr[items[0]][items[1]][items[2]] = {}
+        if items[3] not in curr[items[0]][items[1]][items[2]].keys():
+            curr[items[0]][items[1]][items[2]][items[3]] = {
+                "curr_diff": 0, "curr_amount": 0, "count": 0}
+        if items[4] not in curr[items[0]][items[1]][items[2]].keys():
+            curr[items[0]][items[1]][items[2]][items[4]] = {
+                "curr_diff": 0, "curr_amount": 0, "count": 0}
+
+        if items[2] == "1":
+             # home
+            curr[items[0]][items[1]][items[2]][items[3]
+                                               ]["curr_diff"] = float(items[5]) - float(items[6])
+            curr[items[0]][items[1]][items[2]][items[3]
+                                               ]["curr_amount"] = float(items[5])
+            curr[items[0]][items[1]][items[2]][items[3]
+                                               ]["count"] = 1
+            # away
+            curr[items[0]][items[1]][items[2]][items[4]
+                                               ]["curr_diff"] = float(items[6]) - float(items[5])
+            curr[items[0]][items[1]][items[2]][items[4]
+                                               ]["curr_amount"] = float(items[6])
+            curr[items[0]][items[1]][items[2]][items[4]
+                                               ]["count"] = 1
+        else:
+            # home
+            curr[items[0]][items[1]][items[2]][items[3]
+                                               ]["curr_diff"] = curr[items[0]][items[1]][str(int(items[2])-1)][items[3]
+                                                                                                               ]["curr_diff"] + float(items[5]) - float(items[6])
+            curr[items[0]][items[1]][items[2]][items[3]
+                                               ]["curr_amount"] = curr[items[0]][items[1]][str(int(items[2])-1)][items[3]
+                                                                                                                 ]["curr_amount"] + float(items[5])
+            curr[items[0]][items[1]][items[2]][items[3]
+                                               ]["count"] = curr[items[0]][items[1]][str(int(items[2])-1)][items[3]
+                                                                                                           ]["count"] + 1
+            # away
+            curr[items[0]][items[1]][items[2]][items[4]
+                                               ]["curr_diff"] = curr[items[0]][items[1]][str(int(items[2])-1)][items[4]
+                                                                                                               ]["curr_diff"] + float(items[6]) - float(items[5])
+            curr[items[0]][items[1]][items[2]][items[4]
+                                               ]["curr_amount"] = curr[items[0]][items[1]][str(int(items[2])-1)][items[4]
+                                                                                                                 ]["curr_amount"] + float(items[6])
+            curr[items[0]][items[1]][items[2]][items[4]
+                                               ]["count"] = curr[items[0]][items[1]][str(int(items[2])-1)][items[4]
+                                                                                                           ]["count"] + 1
 
 
 with open("plot_matches.csv", "r") as file:
@@ -58,42 +119,55 @@ with open("plot_matches.csv", "r") as file:
                   "ht_curr_chancediff;at_curr_chancediff;ht_last_year_chancediff;at_last_year_chancediff;" +
                   "ht_curr_chanceamount;at_curr_chanceamount;ht_last_year_chanceamount;at_last_year_chanceamount;" +
                   "ht_market_value;at_market_value;ht_market_value_ln;at_market_value_ln;" +
+                  "ht_curr_xg_diff;at_curr_xg_diff;ht_last_year_xg_diff;at_last_year_xg_diff;" +
+                  "ht_curr_xg_amount;at_curr_xg_amount;ht_last_year_xg_amount;at_last_year_xg_amount;" +
                   "xg_amount;xg_diff;actual_goalamount;actual_goaldiff")
             continue
 
         items = line.split(";")
 
-        ht_ly_chancediff, at_ly_chancediff = 0, 0
-        ht_ly_chanceamount, at_ly_chanceamount = 0, 0
+        ht_curr_xg_diff, at_curr_xg_diff = 0, 0
+        ht_ly_xg_diff, at_ly_xg_diff = 0, 0
 
-        if int(items[1]) > 14:
-            if items[3] in data[items[0]][str(int(items[1])-1)].keys():
-                ht_ly_chanceamount = data[items[0]
-                                          ][str(int(items[1])-1)][items[3]]["chance_sum"]
-                ht_ly_chancediff = data[items[0]
-                                        ][str(int(items[1])-1)][items[3]]["chance_diff"]
+        ht_curr_xg_amount, at_curr_xg_amount = 0, 0
+        ht_ly_xg_amount, at_ly_xg_amount = 0, 0
+
+        ht_curr_xg_diff = curr[items[0]][items[1]][items[2]][items[3]
+                                                             ]["curr_diff"] / curr[items[0]][items[1]][items[2]][items[3]]["count"]
+        at_curr_xg_diff = curr[items[0]][items[1]][items[2]][items[4]
+                                                             ]["curr_diff"] / curr[items[0]][items[1]][items[2]][items[4]]["count"]
+
+        ht_curr_xg_amount = curr[items[0]][items[1]][items[2]][items[3]
+                                                               ]["curr_amount"] / curr[items[0]][items[1]][items[2]][items[3]]["count"]
+        at_curr_xg_amount = curr[items[0]][items[1]][items[2]][items[4]
+                                                               ]["curr_amount"] / curr[items[0]][items[1]][items[2]][items[4]]["count"]
+
+        if items[1] != "14":
+            if items[3] in ann[items[0]][items[1]].keys():
+                ht_ly_xg_diff = ann[items[0]
+                                    ][items[1]][items[3]]["ann_diff"]
+                ht_ly_xg_amount = ann[items[0]
+                                      ][items[1]][items[3]]["ann_amount"]
             else:
-                ht_ly_chanceamount = rel[items[0]][str(
-                    int(items[1])-1)]["rel_sum"]
-                ht_ly_chancediff = rel[items[0]
-                                       ][str(int(items[1])-1)]["rel_diff"]
-
-            if items[4] in data[items[0]][str(int(items[1])-1)].keys():
-                at_ly_chanceamount = data[items[0]
-                                          ][str(int(items[1])-1)][items[4]]["chance_sum"]
-                at_ly_chancediff = data[items[0]
-                                        ][str(int(items[1])-1)][items[4]]["chance_diff"]
+                ht_ly_xg_diff = ann_rel[items[0]][items[1]]["rel_diff"]
+                ht_ly_xg_amount = ann_rel[items[0]][items[1]]["rel_amount"]
+            if items[4] in ann[items[0]][items[1]].keys():
+                at_ly_xg_diff = ann[items[0]
+                                    ][items[1]][items[4]]["ann_diff"]
+                at_ly_xg_amount = ann[items[0]
+                                      ][items[1]][items[4]]["ann_amount"]
             else:
-                at_ly_chanceamount = rel[items[0]][str(
-                    int(items[1])-1)]["rel_sum"]
-                at_ly_chancediff = rel[items[0]
-                                       ][str(int(items[1])-1)]["rel_diff"]
+                at_ly_xg_diff = ann_rel[items[0]][items[1]]["rel_diff"]
+                at_ly_xg_amount = ann_rel[items[0]][items[1]]["rel_amount"]
 
-        print(
-            items[0] + ";" + items[1] + ";" + items[2] + ";" + items[3] + ";" + items[4] + ";" + items[5] + ";" + items[6] + ";" +
-            items[9] + ";" + items[10] + ";" + items[11] + ";" + items[12] + ";" + items[13] + ";" + items[14] + ";" + items[15] + ";" +
-            items[16] + ";" + items[17] + ";" + items[18] + ";" + items[19] + ";" + items[20] + ";" + items[29] + ";" + items[30] + ";" +
-            str(ht_ly_chancediff) + ";" + str(at_ly_chancediff) + ";" + items[31] + ";" + items[32] + ";" + str(ht_ly_chanceamount) + ";" + str(at_ly_chanceamount) + ";" + items[25] + ";" +
-            items[26] + ";" + items[27] + ";" + items[28] + ";" +
-            items[21] + ";" + items[22] + ";" + items[23] + ";" + items[24]
-        )
+        out = ""
+        for item in items:
+            if item not in ["xg_amount", "xg_diff", "actual_goalamount", "actual_goaldiff"]:
+                out += item + ";"
+
+        out += str(ht_curr_xg_diff) + ";" + str(at_curr_xg_diff) + ";" + str(ht_ly_xg_diff) + ";" + str(at_ly_xg_diff) + ";" + \
+            str(ht_curr_xg_amount) + ";" + str(at_curr_xg_amount) + ";" + \
+            str(ht_ly_xg_amount) + ";" + str(at_ly_xg_amount) + ";" + \
+            items[31] + ";" + items[32] + ";" + items[33] + ";" + items[34]
+
+        print(out)
