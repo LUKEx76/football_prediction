@@ -161,9 +161,8 @@ with open("plot_matches.csv", "r") as file:
                 at_ly_xg_amount = ann_rel[items[0]][items[1]]["rel_amount"]
 
         out = ""
-        for item in items:
-            if item not in ["xg_amount", "xg_diff", "actual_goalamount", "actual_goaldiff"]:
-                out += item + ";"
+        for item in items[0:31]:
+            out += item + ";"
 
         out += str(ht_curr_xg_diff) + ";" + str(at_curr_xg_diff) + ";" + str(ht_ly_xg_diff) + ";" + str(at_ly_xg_diff) + ";" + \
             str(ht_curr_xg_amount) + ";" + str(at_curr_xg_amount) + ";" + \
