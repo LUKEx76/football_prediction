@@ -1,3 +1,39 @@
+RAUSGELASSEN:
+- aG Regression Trainingsfehler:
+The training MAE of the goal amount model is displayed in figure \ref{fig:ag_ga}. Figure \ref{subfig:ag_ga_country_season} does not show significant differences between the individual leagues. This confirms that the features have been modeled correctly to account for any league differences. Figure \ref{subfig:ag_ga_country_season} also pictures the impact of noise on the goal amount very well.\\
+
+\begin{figure}[ht] \label{fig:ag_ga}
+    \centering
+    \subfigure[Training error per country and season ]{\includegraphics[scale=0.5]{Bachelorthesis/img/ag_ga_tr_final_country_season.png} \label{subfig:ag_ga_country_season}}
+    \quad
+      \subfigure[General training error]{\includegraphics[scale=0.5]{Bachelorthesis/img/ag_ga_tr_final_general.png}} \label{subfig:ag_ga_general}
+    \caption{\textbf{Goal amount} training error of final model \cite{selfmade}}
+\end{figure}
+
+\noindent
+Figure \ref{subfig:ag_ga_general} which is not grouped by country draws a clearer picture of the training MAE. The training error starts relatively high, because the model can not make use the feature 'last year's chance amount' yet, as there is no data before the season 2014-15 available. Just after the first half of the season 2014-15 the MAE has already reached its average of $\sim$ 1.25 \(\frac{goals}{match}\). Another visible spike is located at the start of season 2015-16. This is where the feature 'last year's chance amount' gets relevant, as it is holding actual information. The model has to first adjust its weights for this feature. Any other spikes and drops are caused from noise.\\
+The training error continues onwards to oscillate around its mean value. The fact that no further decline of the training error is visible shows that the amount of data given to the model is enough and more data would not aid the models performance.\\\\
+
+\noindent
+Figure \ref{fig:ag_gd} shows the similar diagram to figure \ref{fig:ag_ga} just for the goal difference.
+
+\begin{figure}[ht] \label{fig:ag_gd}
+    \centering
+    \subfigure[Training error per country and season ]{\includegraphics[scale=0.5]{Bachelorthesis/img/ag_gd_tr_final_country_season.png} \label{subfig:ag_gd_country_season}}
+    \quad
+      \subfigure[General training error]{\includegraphics[scale=0.5]{Bachelorthesis/img/ag_gd_tr_final_general.png}} \label{subfig:ag_gd_general}
+    \caption{\textbf{Goal difference} training error of final model \cite{selfmade}}
+\end{figure}
+
+\noindent
+Again figure \ref{subfig:ag_gd_country_season} does not show any occurrences where one league as a higher/lower training error than another. Apart from that fact, the figure \ref{subfig:ag_ga_country_season} can be neglected and the figure \ref{subfig:ag_gd_general} delivers more insights.\\
+The goal difference training error does not start with a similar peak than its goal amount counterpart. The reason for that is, that the feature of most importance for the goal difference ('logarithmic market value relative to league mean') is given from the start of season 2014-15 and enables the model to make solid predictions early on.\\
+The spike at the start of season 2015-16, that was clearly noticeable in figure \ref{subfig:ag_ga_general} can be found in figure \ref{subfig:ag_gd_general} too. The reason is the same as mentioned above, the feature 'last year's chance difference' only starts carrying information with the start of season 2015-16.\\
+Overall noticeable is that goal difference training error is oscillating less than the goal amount training error and the amount of data provided to the model is sufficient.\\\\
+
+
+
+
 - Outlier Entfernung crossvalidieren?
 - Cubek nach Namen von Fussballergebnissverteilung fragen
 - Nochmal linear regression / squared loss nachlesen Sec 5.2
